@@ -1,14 +1,44 @@
 {
   "name": "@mhd/plugin-simple-approval",
-  "version": "1.0.0",
-  "description": "Workflow-independent generic approval engine for NocoBase 2.2.x",
-  "main": "dist/server/index.js",
-  "module": "dist/client/index.js",
-  "nocobase": {"client": "client-v2.js"},
-  "types": "dist/index.d.ts",
-  "files": ["dist", "src", "README.md", "INSTALLATION.md", "ADMIN_GUIDE.md", "COMPATIBILITY.md"],
-  "scripts": {"build": "tsc -p tsconfig.json", "test": "node --test test/*.test.js", "pack": "npm pack --ignore-scripts"},
-  "peerDependencies": {"@nocobase/server": ">=2.2.0 <2.3.0", "@nocobase/client": ">=2.2.0 <2.3.0"},
-  "devDependencies": {"typescript": "^5.4.0"},
-  "license": "MIT"
+  "version": "1.1.0",
+  "displayName": "Simple Approval",
+  "description": "Workflow-independent multi-step approval engine for NocoBase 2.x. Approval templates, sequential/parallel steps, approve/reject/return, history timeline and record snapshots.",
+  "main": "./dist/server/index.js",
+  "license": "MIT",
+  "keywords": [
+    "Approval",
+    "Workflow-independent"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "node --test test/*.test.js",
+    "pack": "npm pack --ignore-scripts"
+  },
+  "peerDependencies": {
+    "@nocobase/server": "2.x",
+    "@nocobase/database": "2.x",
+    "@nocobase/client-v2": "2.x",
+    "@nocobase/flow-engine": "2.x"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  },
+  "files": [
+    "dist",
+    "src",
+    "server.js",
+    "server.d.ts",
+    "client-v2.js",
+    "client-v2.d.ts",
+    "README.md",
+    "INSTALLATION.md",
+    "ADMIN_GUIDE.md",
+    "USAGE.md",
+    "COMPATIBILITY.md"
+  ],
+  "nocobase": {
+    "supportedVersions": [
+      "2.x"
+    ]
+  }
 }

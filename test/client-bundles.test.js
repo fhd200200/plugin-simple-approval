@@ -46,14 +46,21 @@ function makeReactStub() {
 }
 
 /** Execute a UMD bundle through a fake AMD (requirejs) environment. */
-function loadViaAmd(bundlePath, depStubs) {
+function loadViaAmd(bundlePath, depStubs, expectedName) {
   const code = fs.readFileSync(bundlePath, 'utf8');
+  let amdName = null;
   let amdDeps = null;
   let resolved = null;
-  const fakeDefine = (deps, factory) => {
+  const fakeDefine = (...args) => {
+    // Official NocoBase bundles use NAMED defines:
+    //   define("@scope/pkg", [deps], factory)
+    assert.equal(typeof args[0], 'string', 'define() must be named (official format)');
+    amdName = args[0];
+    const deps = Array.isArray(args[1]) ? args[1] : [];
+    const factory = Array.isArray(args[1]) ? args[2] : args[1];
     amdDeps = deps;
-    const args = deps.map((name) => (name === 'require' ? () => depStubs[name] : depStubs[name]));
-    resolved = factory(...args);
+    const args2 = deps.map((name) => depStubs[name]);
+    resolved = factory(...args2);
   };
   fakeDefine.amd = true;
   // Fresh context = browser-like: no CommonJS `module`/`exports`,
@@ -63,7 +70,10 @@ function loadViaAmd(bundlePath, depStubs) {
     self: { React: makeReactStub() },
   });
   assert.ok(amdDeps, 'AMD define() was not called');
-  return { module: resolved, amdDeps };
+  if (expectedName) {
+    assert.equal(amdName, expectedName, 'AMD module name must match the loader module id');
+  }
+  return { module: resolved, amdDeps, amdName };
 }
 
 // ---------------------------------------------------------------------------
@@ -123,11 +133,15 @@ test('v1 bundle loads via AMD and registers settings page, routes, scopes and in
     '@nocobase/client': clientStub,
   };
 
-  const { module: m, amdDeps } = loadViaAmd(path.join(__dirname, '../dist/client/index.js'), depStubs);
+  const { module: m, amdDeps } = loadViaAmd(
+    path.join(__dirname, '../dist/client/index.js'),
+    depStubs,
+    '@mhd/plugin-simple-approval',
+  );
 
   // AMD deps must all be provided by the v1 host (defineGlobalDeps)
+  assert.ok(!amdDeps.includes('require'), 'deps must not contain require (official format)');
   for (const dep of amdDeps) {
-    if (dep === 'require') continue;
     assert.ok(depStubs[dep], `stub missing for AMD dep: ${dep}`);
   }
 
@@ -235,10 +249,14 @@ test('v2 bundle loads via AMD and registers settings menu, routes and model load
     '@nocobase/flow-engine': flowEngineStub,
   };
 
-  const { module: m, amdDeps } = loadViaAmd(path.join(__dirname, '../dist/client-v2/index.js'), depStubs);
+  const { module: m, amdDeps } = loadViaAmd(
+    path.join(__dirname, '../dist/client-v2/index.js'),
+    depStubs,
+    '@mhd/plugin-simple-approval/client-v2',
+  );
 
+  assert.ok(!amdDeps.includes('require'), 'deps must not contain require (official format)');
   for (const dep of amdDeps) {
-    if (dep === 'require') continue;
     assert.ok(depStubs[dep], `stub missing for AMD dep: ${dep}`);
   }
 

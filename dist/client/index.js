@@ -2,7 +2,15 @@
   if (typeof exports === 'object' && typeof module === 'object') {
     module.exports = factory(require);
   } else if (typeof define === 'function' && define.amd) {
-    define(["require","react","react-router-dom","antd","@ant-design/icons","@nocobase/client"], factory);
+    define("@mhd/plugin-simple-approval", ["react","react-router-dom","antd","@ant-design/icons","@nocobase/client"], function () {
+      var __names = ["react","react-router-dom","antd","@ant-design/icons","@nocobase/client"];
+      var __map = {};
+      for (var __i = 0; __i < __names.length; __i++) __map[__names[__i]] = arguments[__i];
+      return factory(function (name) {
+        if (name in __map) return __map[name];
+        throw new Error('Cannot resolve module: ' + name);
+      });
+    });
   } else {
     var __globals = {
       "react": root["React"],
@@ -16,19 +24,7 @@
       throw new Error('Cannot resolve module: ' + name);
     });
   }
-}(typeof self !== 'undefined' ? self : this, function (__hostRequire) {
-  var __injected = Array.prototype.slice.call(arguments, 1);
-  var __names = ["react","react-router-dom","antd","@ant-design/icons","@nocobase/client"];
-  var __map = {};
-  for (var __i = 0; __i < __names.length; __i++) __map[__names[__i]] = __injected[__i];
-  var require = function (name) {
-    if (name in __map) {
-      if (__map[name] === undefined && typeof __hostRequire === 'function') return __hostRequire(name);
-      return __map[name];
-    }
-    if (typeof __hostRequire === 'function') return __hostRequire(name);
-    throw new Error('Cannot resolve module: ' + name);
-  };
+}(typeof self !== 'undefined' ? self : this, function (require) {
   var module = { exports: {} };
 var __create = Object.create;
 var __defProp = Object.defineProperty;
@@ -59,12 +55,12 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
 // src/client/index.tsx
-var index_exports = {};
-__export(index_exports, {
+var client_exports = {};
+__export(client_exports, {
   PluginSimpleApprovalClient: () => PluginSimpleApprovalClient,
   default: () => plugin_default
 });
-module.exports = __toCommonJS(index_exports);
+module.exports = __toCommonJS(client_exports);
 
 // src/client/plugin.tsx
 var import_client6 = require("@nocobase/client");

@@ -2,7 +2,15 @@
   if (typeof exports === 'object' && typeof module === 'object') {
     module.exports = factory(require);
   } else if (typeof define === 'function' && define.amd) {
-    define(["require","react","antd","@ant-design/icons","@nocobase/client-v2","@nocobase/flow-engine"], factory);
+    define("@mhd/plugin-simple-approval/client-v2", ["react","antd","@ant-design/icons","@nocobase/client-v2","@nocobase/flow-engine"], function () {
+      var __names = ["react","antd","@ant-design/icons","@nocobase/client-v2","@nocobase/flow-engine"];
+      var __map = {};
+      for (var __i = 0; __i < __names.length; __i++) __map[__names[__i]] = arguments[__i];
+      return factory(function (name) {
+        if (name in __map) return __map[name];
+        throw new Error('Cannot resolve module: ' + name);
+      });
+    });
   } else {
     var __globals = {
       "react": root["React"],
@@ -16,19 +24,7 @@
       throw new Error('Cannot resolve module: ' + name);
     });
   }
-}(typeof self !== 'undefined' ? self : this, function (__hostRequire) {
-  var __injected = Array.prototype.slice.call(arguments, 1);
-  var __names = ["react","antd","@ant-design/icons","@nocobase/client-v2","@nocobase/flow-engine"];
-  var __map = {};
-  for (var __i = 0; __i < __names.length; __i++) __map[__names[__i]] = __injected[__i];
-  var require = function (name) {
-    if (name in __map) {
-      if (__map[name] === undefined && typeof __hostRequire === 'function') return __hostRequire(name);
-      return __map[name];
-    }
-    if (typeof __hostRequire === 'function') return __hostRequire(name);
-    throw new Error('Cannot resolve module: ' + name);
-  };
+}(typeof self !== 'undefined' ? self : this, function (require) {
   var module = { exports: {} };
 var __create = Object.create;
 var __defProp = Object.defineProperty;
@@ -36,13 +32,8 @@ var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __esm = (fn, res, err) => function __init() {
-  if (err) throw err[0];
-  try {
-    return fn && (res = (0, fn[__getOwnPropNames(fn)[0]])(fn = 0)), res;
-  } catch (e) {
-    throw err = [e], e;
-  }
+var __esm = (fn, res) => function __init() {
+  return fn && (res = (0, fn[__getOwnPropNames(fn)[0]])(fn = 0)), res;
 };
 var __export = (target, all) => {
   for (var name in all)
@@ -1320,12 +1311,12 @@ var init_CancelApprovalAction = __esm({
 });
 
 // src/client-v2/index.tsx
-var index_exports = {};
-__export(index_exports, {
+var client_v2_exports = {};
+__export(client_v2_exports, {
   PluginSimpleApprovalClientV2: () => PluginSimpleApprovalClientV2,
   default: () => plugin_default
 });
-module.exports = __toCommonJS(index_exports);
+module.exports = __toCommonJS(client_v2_exports);
 
 // src/client-v2/plugin.tsx
 var import_client_v26 = require("@nocobase/client-v2");

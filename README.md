@@ -28,7 +28,7 @@ Build the package and upload it through **Plugin Manager → Upload local packag
 
 ```bash
 npm pack --ignore-scripts
-# then upload mhd-plugin-simple-approval-1.2.0.tgz in NocoBase Plugin Manager
+# then upload mhd-plugin-simple-approval-1.3.0.tgz in NocoBase Plugin Manager
 ```
 
 ## Quick start / البداية السريعة

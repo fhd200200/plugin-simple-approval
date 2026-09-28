@@ -7,7 +7,7 @@
 
 ## Option 1 — Upload through Plugin Manager (recommended)
 
-1. Get the package file `mhd-plugin-simple-approval-1.2.0.tgz`
+1. Get the package file `mhd-plugin-simple-approval-1.3.0.tgz`
    (from this repository, or build it locally — see below).
 2. In NocoBase, open **Plugin Manager → Upload local package** and select the `.tgz`.
 3. After the plugin is added and built, **enable** it.
@@ -26,7 +26,7 @@ cd plugin-simple-approval
 npm install        # installs dev dependency: typescript
 npm run build      # compiles src/ -> dist/
 npm test           # optional: runs engine + server tests
-npm run pack       # produces mhd-plugin-simple-approval-1.2.0.tgz
+npm run pack       # produces mhd-plugin-simple-approval-1.3.0.tgz
 ```
 
 Then upload the generated `.tgz` via Plugin Manager as above.
@@ -48,7 +48,7 @@ NocoBase source tree and rebuild, or mount it as a volume, then run
 
 | Symptom | Fix |
 | --- | --- |
-| `main file dist/server/index.js not found` | You uploaded an old/source-only tarball. Use `mhd-plugin-simple-approval-1.2.0.tgz` which contains `dist/`. |
-| `Script error for "@mhd/plugin-simple-approval"` (requirejs) | The browser could not load the client bundle. Version 1.2.0+ ships **both** `dist/client/index.js` (default UI) and `dist/client-v2/index.js` (`/v`). Make sure you uploaded 1.2.0 and fully refreshed the page (Ctrl+Shift+R). |
+| `main file dist/server/index.js not found` | You uploaded an old/source-only tarball. Use `mhd-plugin-simple-approval-1.3.0.tgz` which contains `dist/`. |
+| `Script error for "@mhd/plugin-simple-approval"` (requirejs) | The browser could not load the client bundle. Version 1.3.0+ ships **both** `dist/client/index.js` (default UI) and `dist/client-v2/index.js` (`/v`). Make sure you uploaded 1.2.0 and fully refreshed the page (Ctrl+Shift+R). |
 | Buttons do nothing | The action must be used inside a block that is bound to the target collection (record scene). |
 | `No active approval template is configured...` | Create/activate a template for that collection first. |

@@ -1,0 +1,13 @@
+{
+  "name": "@mhd/plugin-simple-approval",
+  "version": "1.0.0",
+  "description": "Workflow-independent generic approval engine for NocoBase 2.2.x",
+  "main": "dist/server/index.js",
+  "module": "dist/client/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist", "src", "README.md", "INSTALLATION.md", "ADMIN_GUIDE.md", "COMPATIBILITY.md"],
+  "scripts": {"build": "tsc -p tsconfig.json", "test": "node --test test/*.test.js", "pack": "npm pack --ignore-scripts"},
+  "peerDependencies": {"@nocobase/server": ">=2.2.0 <2.3.0", "@nocobase/client": ">=2.2.0 <2.3.0"},
+  "devDependencies": {"typescript": "^5.4.0"},
+  "license": "MIT"
+}

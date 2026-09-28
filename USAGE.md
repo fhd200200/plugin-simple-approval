@@ -5,8 +5,8 @@
 | What | Where |
 | --- | --- |
 | **صفحة إعدادات الإضافة** (Plugin settings) | **Settings → Plugin settings → Simple Approval** — فيها تبويبان: **Approval Templates** و **How to use** |
-| **Approval Center** (لوحة المتابعة) | `/v/approval-center` — إحصائيات + My Approvals + My Requests |
-| **صفحة المراجعة** (Review) | من Approval Center → زر **Review**، أو مباشرة `/v/approval/review/<requestId>` |
+| **Approval Center** (لوحة المتابعة) | `/approval-center` (الواجهة الافتراضية) أو `/v/approval-center` (واجهة /v) — إحصائيات + My Approvals + My Requests |
+| **صفحة المراجعة** (Review) | من Approval Center → زر **Review**، أو مباشرة `/approval/review/<requestId>` |
 | **أزرار السجلات** | أي Table/Details/Form → **Configure actions** → `Submit for approval` / `Approve` / `Reject` / `Return` / `Cancel approval` |
 
 > لتسهيل الوصول، يمكنك إضافة رابط في القائمة الجانبية يشير إلى `/v/approval-center`.
@@ -103,7 +103,7 @@ activating a new one deactivates the previous automatically.
 ### 5. الاستخدام اليومي
 
 1. يفتح المستخدم السجل → **Submit for approval** → يُحفظ **Snapshot** للسجل.
-2. يظهر الطلب لدى المعتمدين في **Approval Center → My Approvals**.
+2. يظهر الطلب لدى المعتمدين في **Approval Center → My Approvals** (يمكن إضافة رابط للقائمة الجانبية يشير إلى `/approval-center`).
 3. يفتح المعتمد **Review** وينفذ:
    - **Approve** — تنتقل للخطوة التالية أو تكتمل الموافقة،
    - **Reject** — إنهاء الطلب (السبب **إلزامي**)،

@@ -8,8 +8,8 @@ A multi-step approval engine for NocoBase 2.x — fully independent of the Workf
 | Page / الصفحة | Where / المكان |
 | --- | --- |
 | **Approval Templates + How to use (settings)** | Settings → Plugin settings → **Simple Approval** |
-| **Approval Center** (dashboard, My Approvals, My Requests) | `/v/approval-center` |
-| **Review page** (approve / reject / return, timeline, snapshot) | `/v/approval/review/:id` |
+| **Approval Center** (dashboard, My Approvals, My Requests) | `/approval-center` (default UI) — `/v/approval-center` (v2 UI) |
+| **Review page** (approve / reject / return, timeline, snapshot) | `/approval/review/:id` |
 | **Record buttons** | "Configure actions" on any table/block: `Submit for approval`, `Approve`, `Reject`, `Return`, `Cancel approval` |
 
 ## Features
@@ -20,7 +20,7 @@ A multi-step approval engine for NocoBase 2.x — fully independent of the Workf
 - **Actions**: Approve, Reject (reason required), Return to submitter (reason required), Cancel (submitter or admin).
 - **History timeline** of every action + **record snapshot** at submission time.
 - **Status write-back**: optionally map submit/approve/reject/return/cancel to a status field on the business record.
-- Works on the NocoBase **v2 client** (`/v` entry). No Workflow dependency.
+- Works on **both UI entries**: the default client (no `/v`) **and** the v2 client (`/v`). No Workflow dependency.
 
 ## Install
 
@@ -28,7 +28,7 @@ Build the package and upload it through **Plugin Manager → Upload local packag
 
 ```bash
 npm pack --ignore-scripts
-# then upload mhd-plugin-simple-approval-<version>.tgz in NocoBase Plugin Manager
+# then upload mhd-plugin-simple-approval-1.2.0.tgz in NocoBase Plugin Manager
 ```
 
 ## Quick start / البداية السريعة
@@ -57,7 +57,7 @@ Full guide: [USAGE.md](USAGE.md) · Admin reference: [ADMIN_GUIDE.md](ADMIN_GUID
 ```bash
 npm install       # typescript only
 npm run build     # tsc -> dist/
-npm test          # engine + server-plugin tests (13 tests)
+npm test          # engine + server + client bundle tests (16 tests)
 npm run pack      # build the .tgz
 ```
 

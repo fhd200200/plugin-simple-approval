@@ -1,8 +1,8 @@
 {
   "name": "@mhd/plugin-simple-approval",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "displayName": "Simple Approval",
-  "description": "Workflow-independent multi-step approval engine for NocoBase 2.x. Approval templates, sequential/parallel steps, approve/reject/return, history timeline and record snapshots.",
+  "description": "Workflow-independent multi-step approval engine for NocoBase 2.x. Approval templates, sequential/parallel steps, approve/reject/return, history timeline and record snapshots. Works on both the default UI and the /v entry.",
   "main": "./dist/server/index.js",
   "license": "MIT",
   "keywords": [
@@ -10,17 +10,21 @@
     "Workflow-independent"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json && node build-client.cjs",
+    "build:server": "tsc -p tsconfig.json",
+    "build:client": "node build-client.cjs",
     "test": "node --test test/*.test.js",
     "pack": "npm pack --ignore-scripts"
   },
   "peerDependencies": {
     "@nocobase/server": "2.x",
     "@nocobase/database": "2.x",
+    "@nocobase/client": "2.x",
     "@nocobase/client-v2": "2.x",
     "@nocobase/flow-engine": "2.x"
   },
   "devDependencies": {
+    "esbuild": "^0.24.0",
     "typescript": "^5.4.0"
   },
   "files": [
@@ -28,8 +32,11 @@
     "src",
     "server.js",
     "server.d.ts",
+    "client.js",
+    "client.d.ts",
     "client-v2.js",
     "client-v2.d.ts",
+    "build-client.cjs",
     "README.md",
     "INSTALLATION.md",
     "ADMIN_GUIDE.md",

@@ -4,6 +4,7 @@
   "description": "Workflow-independent generic approval engine for NocoBase 2.2.x",
   "main": "dist/server/index.js",
   "module": "dist/client/index.js",
+  "nocobase": {"client": "client-v2.js"},
   "types": "dist/index.d.ts",
   "files": ["dist", "src", "README.md", "INSTALLATION.md", "ADMIN_GUIDE.md", "COMPATIBILITY.md"],
   "scripts": {"build": "tsc -p tsconfig.json", "test": "node --test test/*.test.js", "pack": "npm pack --ignore-scripts"},
